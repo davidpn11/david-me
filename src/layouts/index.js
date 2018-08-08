@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import prof from '../images/profile.jpg'
 import Header from '../components/header'
 import './index.css'
-
+import './app.scss'
 const Layout = ({ children, data }) => (
   <div>
     <Helmet
