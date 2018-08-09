@@ -1,9 +1,21 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import prof from '../images/profile.jpg'
+import Header from '../components/header'
+import './index.css'
+import './app.scss'
 import profile from '../images/profile.jpg'
-import '../layouts/app.scss'
-const IndexPage = () => (
+
+const Layout = ({ children, data }) => (
   <div className="wrapper">
+    <Helmet
+      title={data.site.siteMetadata.title}
+      meta={[
+        { name: 'description', content: 'Sample' },
+        { name: 'keywords', content: 'sample, something' },
+      ]}
+    />
     <header className="header">
       <img className="profile" src={profile} />
     </header>
@@ -42,4 +54,18 @@ const IndexPage = () => (
   </div>
 )
 
-export default IndexPage
+Layout.propTypes = {
+  children: PropTypes.func,
+}
+
+export default Layout
+
+export const query = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
